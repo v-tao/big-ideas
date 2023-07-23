@@ -22,8 +22,7 @@ module.exports = {
     async createIdea(req, res, next) {
         const query = `INSERT INTO ideas
             (text, source)
-            VALUES('${req.body.text}', '${req.body.source}')
-        ;`;
+            VALUES('${req.body.text}', '${req.body.source}');`;
         try {
             await pool.query(query);
             res.send("Idea successfully created");
@@ -37,8 +36,7 @@ module.exports = {
             SET 
             text='${req.body.text}',
             source='${req.body.source}'
-            WHERE id=${req.params.id};
-        `;
+            WHERE id=${req.params.id};`;
         try {
             await pool.query(query);
             res.send("Idea successfully updated");
