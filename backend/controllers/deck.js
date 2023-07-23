@@ -63,6 +63,18 @@ module.exports = {
         }
     },
 
+    async removeIdeaFromDeck(req, res, next) {
+        const query = `DELETE FROM deck_ideas 
+            WHERE deck_id=${req.params.deck_id}
+            AND idea_id=${req.params.idea_id};`;
+        try {
+            await pool.query(query);
+            res.send("Idea successfully deleted");
+        } catch (err) {
+            console.log(err);
+        }
+    },
+
     async deleteDeck(req, res, next) {
         const query = `DELETE FROM ideas WHERE id=${req.params.id};`;
         try {
