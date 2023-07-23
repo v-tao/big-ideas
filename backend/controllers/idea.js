@@ -1,21 +1,59 @@
+const pool = require("../pool");
+
 module.exports = {
     async getIdeas(req, res, next) {
-        res.send("getIdeas");
+        const query = `SELECT * FROM ideas;`;
+        try {
+            res.json((await pool.query(query))["rows"]);
+        } catch (err) {
+            console.log(err);
+        }
     },
 
     async getIdeaById(req, res, next) {
-        res.send("getIdeaById");
+        const query = `SELECT * FROM ideas WHERE id=${req.params.id};`;
+        try {
+            res.json((await pool.query(query))["rows"]);
+        } catch (err) {
+            console.log(err);
+        }
     },
 
     async createIdea(req, res, next) {
-        res.send("createIdea");
+        const query = `INSERT INTO ideas
+            (text, source)
+            VALUES('${req.body.text}', '${req.body.source}')
+        ;`;
+        try {
+            await pool.query(query);
+            res.send("Idea successfully created");
+        } catch (err) {
+            console.log(err);
+        }
     },
 
     async updateIdea(req, res, next) {
-        res.send("updateIdea");
+        const query = `UPDATE ideas
+            SET 
+            text='${req.body.text}',
+            source='${req.body.source}'
+            WHERE id=${req.params.id};
+        `;
+        try {
+            await pool.query(query);
+            res.send("Idea successfully updated");
+        } catch (err) {
+            console.log(err);
+        }
     },
 
     async deleteIdea(req, res, next) {
-        res.send("deleteIdea");
+        const query = `DELETE from ideas WHERE id=${req.params.id}`;
+        try {
+            await pool.query(query);
+            res.send("Idea successfully deleted");
+        } catch (err) {
+            console.log(err);
+        }
     }
 }
