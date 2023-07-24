@@ -1,4 +1,5 @@
 const express = require("express");
+    cors = require("cors");
 const app = express();
 const deckRoutes = require("./routes/deck");
     ideaRoutes = require("./routes/idea");
