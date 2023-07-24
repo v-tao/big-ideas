@@ -8,16 +8,15 @@ import { DeckService } from './deck.service';
   styleUrls: ['./deck.component.css']
 })
 export class DeckComponent implements OnInit {
-  deck : any;
+  decks : any;
   constructor(private deckService: DeckService) {
-    this.deck = null;
+    this.decks = null;
   }
 
   ngOnInit() {
     this.deckService.getDecks().subscribe(
-      (deck) => {
-        console.log(deck);
-        this.deck = deck;
+      (decks) => {
+        this.decks = decks;
       }, (err) => {
         console.log(err);
       }
