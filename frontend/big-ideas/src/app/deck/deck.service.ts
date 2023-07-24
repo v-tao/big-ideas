@@ -8,8 +8,8 @@ export class DeckService {
 
   constructor(private http: HttpClient) { }
 
-  getDecks() {
+  getDeckById(id: number): any {
     const url = "http://localhost:3000/decks";
-    return this.http.get(url);
+    return this.http.get(`${url}/${id}`);
   }
 }
