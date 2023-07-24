@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { DeckComponent } from './deck/deck.component';
 
 const routes: Routes = [
-  { path:'/decks', component: DeckComponent },
+  { path:'decks', component: DeckComponent },
 ];
 
 @NgModule({
