@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Deck } from '../models/deck';
 import { DeckService } from './deck.service';
 
 @Component({
