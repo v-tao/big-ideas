@@ -11,8 +11,18 @@ export class IdeaService {
 
   constructor(private http: HttpClient) { }
 
-  getIdeaById(id : number) : Observable<Idea> {
+  getIdeaById(id: number): Observable<Idea> {
     const url = `${environment.apiUrl}/ideas/${id}`;
     return this.http.get<Idea>(url);
+  }
+
+  updateIdeaById(idea: Idea): Observable<Idea> {
+    const url= `${environment.apiUrl}/ideas/${idea.id}`;
+    return this.http.put<Idea>(url, idea);
+  }
+
+  deleteIdeaById(id: number): Observable<Idea> {
+    const url = `${environment.apiUrl}/ideas/${id}`;
+    return this.http.delete<Idea>(url);
   }
 }
