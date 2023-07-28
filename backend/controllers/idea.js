@@ -25,7 +25,10 @@ module.exports = {
             VALUES('${req.body.text}', '${req.body.source}');`;
         try {
             await pool.query(query);
-            res.send("Idea successfully created");
+            res.json({
+                message: "OK",
+                status: 200,
+            });
         } catch (err) {
             console.log(err);
         }
@@ -39,7 +42,10 @@ module.exports = {
             WHERE id=${req.params.id};`;
         try {
             await pool.query(query);
-            res.send("Idea successfully updated");
+            res.json({
+                message: "OK",
+                status: 200,
+            });
         } catch (err) {
             console.log(err);
         }
@@ -49,7 +55,10 @@ module.exports = {
         const query = `DELETE from ideas WHERE id=${req.params.id}`;
         try {
             await pool.query(query);
-            res.send("Idea successfully deleted");
+            res.json({
+                "message": "OK",
+                "status": 200,
+            });
         } catch (err) {
             console.log(err);
         }
