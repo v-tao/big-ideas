@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DeckService } from './deck.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-deck',
@@ -8,7 +9,7 @@ import { DeckService } from './deck.service';
 })
 export class DeckComponent implements OnInit {
   deck : any;
-  constructor(private deckService: DeckService) {
+  constructor(private deckService: DeckService, private route: ActivatedRoute) {
     this.deck = {
       title: null,
       description: null,
@@ -17,13 +18,16 @@ export class DeckComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.deckService.getDeckById(3).subscribe(
-      (deck: any) => {
-        this.deck = deck;
-        console.log(this.deck);
-      }, (err: any) => {
-        console.log(err);
-      }
-    )
+    this.route.paramMap.subscribe(params => {
+      const id = +params.get("id")!;
+      this.deckService.getDeckById(id).subscribe(
+        (deck: any) => {
+          this.deck = deck;
+          console.log(this.deck);
+        }, (err: any) => {
+          console.log(err);
+        }
+      )
+    })
   }
 }
