@@ -26,7 +26,7 @@ module.exports = {
         try {
             await pool.query(query);
             res.json({
-                message: "OK",
+                message: "Idea successfully created.",
                 status: 200,
             });
         } catch (err) {
@@ -43,7 +43,7 @@ module.exports = {
         try {
             await pool.query(query);
             res.json({
-                message: "OK",
+                message: "Idea successfully updated.",
                 status: 200,
             });
         } catch (err) {
@@ -56,7 +56,7 @@ module.exports = {
         try {
             await pool.query(query);
             res.json({
-                "message": "OK",
+                "message": "Idea successfully deleted.",
                 "status": 200,
             });
         } catch (err) {

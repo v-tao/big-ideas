@@ -31,7 +31,10 @@ module.exports = {
             VALUES('${req.body.title}', '${req.body.description}');`;
         try {
             await pool.query(query);
-            res.send("Deck successfully created");
+            res.json({
+                message: "Deck successfully created.",
+                status: 200
+            })
         } catch (err) {
             console.log(err);
         }
@@ -43,7 +46,10 @@ module.exports = {
             VALUES(${req.params.deck_id}, ${req.params.idea_id});`
         try {
             await pool.query(query);
-            res.send("Idea successfully added to deck");
+            res.json({
+                message: "Idea successfully added to deck.",
+                status: 200
+            })
         } catch (err) {
             console.log(err);
         }
@@ -57,7 +63,10 @@ module.exports = {
             WHERE id=${req.params.id};`
         try {
             await pool.query(query);
-            res.send("Deck successfully updated");
+            res.json({
+                message: "Deck successfully updated.",
+                status: 200
+            })
         } catch (err) {
             console.log(err);
         }
@@ -69,7 +78,10 @@ module.exports = {
             AND idea_id=${req.params.idea_id};`;
         try {
             await pool.query(query);
-            res.send("Idea successfully deleted");
+            res.json({
+                message: "Idea successfully removed.",
+                status: 200
+            })
         } catch (err) {
             console.log(err);
         }
@@ -79,7 +91,10 @@ module.exports = {
         const query = `DELETE FROM ideas WHERE id=${req.params.id};`;
         try {
             await pool.query(query);
-            res.send("Deck successfully deleted");
+            res.json({
+                message: "Deck successfully deleted.",
+                status: 200
+            })
         } catch (err) {
             console.log(err);
         }
