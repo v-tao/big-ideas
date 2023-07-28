@@ -1,5 +1,5 @@
 <div>
     <div *ngFor="let deck of this.decks">
-        <h1>{{deck.title}}</h1>
+        <h1><a [routerLink]="['/decks', deck.id]">{{deck.title}}</a></h1>
     </div>
 </div>
