@@ -23,7 +23,7 @@ export class IdeaComponent implements OnInit {
     })
   }
 
-  deleteIdea() {
+  deleteIdeaById() {
     this.route.paramMap.subscribe(params => {
       const id = +params.get('id')!;
       this.ideaService.deleteIdeaById(id).subscribe(
