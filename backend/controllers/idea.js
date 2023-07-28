@@ -13,7 +13,7 @@ module.exports = {
     async getIdeaById(req, res, next) {
         const query = `SELECT * FROM ideas WHERE id=${req.params.id};`;
         try {
-            res.json((await pool.query(query))["rows"]);
+            res.json((await pool.query(query))["rows"][0]);
         } catch (err) {
             console.log(err);
         }
