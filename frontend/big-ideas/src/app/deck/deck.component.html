@@ -10,6 +10,7 @@
         <div *ngFor="let idea of this.deck.ideas">
             <h2>{{idea.text}}</h2>
             <p><em>{{idea.source}}</em></p>
+            <button (click)="removeIdeaFromDeck(idea.id)">Remove</button>
         </div>
     </ng-template>
     <button (click)="deleteDeckById()">Delete</button>
