@@ -6,12 +6,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DeckComponent } from './deck/deck.component';
 import { AllDecksComponent } from './all-decks/all-decks.component';
+import { AllIdeasComponent } from './all-ideas/all-ideas.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DeckComponent,
-    AllDecksComponent
+    AllDecksComponent,
+    AllIdeasComponent
   ],
   imports: [
     BrowserModule,

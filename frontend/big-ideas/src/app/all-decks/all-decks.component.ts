@@ -15,7 +15,6 @@ export class AllDecksComponent implements OnInit {
     this.allDecksService.getDecks().subscribe(
       (decks: any) => {
         this.decks = decks;
-        console.log(this.decks);
       }, (err: any) => {
         console.log(err);
       }
