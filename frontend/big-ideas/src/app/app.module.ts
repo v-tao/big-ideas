@@ -7,13 +7,15 @@ import { AppComponent } from './app.component';
 import { DeckComponent } from './deck/deck.component';
 import { AllDecksComponent } from './all-decks/all-decks.component';
 import { AllIdeasComponent } from './all-ideas/all-ideas.component';
+import { IdeaComponent } from './idea/idea.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DeckComponent,
     AllDecksComponent,
-    AllIdeasComponent
+    AllIdeasComponent,
+    IdeaComponent
   ],
   imports: [
     BrowserModule,
