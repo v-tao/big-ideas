@@ -16,12 +16,10 @@ export class IdeaComponent implements OnInit {
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
       const id = +params.get("id")!;
-      this.ideaService.getIdeaById(id).subscribe(
-        {
+      this.ideaService.getIdeaById(id).subscribe({
           next: (idea) => this.idea = idea,
           error: (e) => console.error(e),
-        }
-      )
+        })
     })
   }
 
