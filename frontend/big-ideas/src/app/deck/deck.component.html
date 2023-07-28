@@ -1,13 +1,16 @@
-<div>
-    <h1>{{this.deck.title}}</h1>
-    <p>{{this.deck.description}}</p>
-</div>
-<div *ngIf="this.deck.ideas == 0; else elseBlock">
-    <p>This deck is empty.</p>
-</div>
-<ng-template #elseBlock>
-    <div *ngFor="let idea of this.deck.ideas">
-        <h2>{{idea.text}}</h2>
-        <p><em>{{idea.source}}</em></p>
+<div *ngIf="this.deck">
+    <div>
+        <h1>{{this.deck.title}}</h1>
+        <p>{{this.deck.description}}</p>
     </div>
-</ng-template>
+    <div *ngIf="this.deck.ideas.length == 0; else elseBlock">
+        <p>This deck is empty.</p>
+    </div>
+    <ng-template #elseBlock>
+        <div *ngFor="let idea of this.deck.ideas">
+            <h2>{{idea.text}}</h2>
+            <p><em>{{idea.source}}</em></p>
+        </div>
+    </ng-template>
+    <button (click)="deleteDeckById()">Delete</button>
+</div>

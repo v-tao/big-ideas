@@ -15,4 +15,9 @@ export class DeckService {
     const url = `${environment.apiUrl}/decks/${id}`;
     return this.http.get<Deck>(url);
   }
+
+  deleteDeckById(id: number): Observable<Deck> {
+    const url = `${environment.apiUrl}/decks/${id}`;
+    return this.http.delete<Deck>(url);
+  }
 }

@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { DeckService } from './deck.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Deck } from '../models/deck';
 
@@ -12,7 +12,10 @@ import { Deck } from '../models/deck';
 export class DeckComponent implements OnInit, OnDestroy {
   deck : Deck | undefined;
   private subscriptions: Subscription[] = [];
-  constructor(private deckService: DeckService, private route: ActivatedRoute) { }
+  constructor(
+    private deckService: DeckService, 
+    private route: ActivatedRoute, 
+    private router: Router) { }
 
   ngOnInit() {
     this.getDeckById();
@@ -27,6 +30,16 @@ export class DeckComponent implements OnInit, OnDestroy {
       })
     });
     this.subscriptions?.push(getDeckByIdSubscription);
+  }
+
+  deleteDeckById() {
+    const deleteDeckByIdSubscription = this.route.paramMap.subscribe(params => {
+      const id = +params.get('id')!;
+      this.deckService.deleteDeckById(id).subscribe({
+        next: () => this.router.navigate(['/decks']),
+        error: (err) => console.error(err),
+      })
+    })
   }
 
   ngOnDestroy() {
