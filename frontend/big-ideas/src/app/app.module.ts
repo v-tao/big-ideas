@@ -8,6 +8,7 @@ import { DeckComponent } from './deck/deck.component';
 import { AllDecksComponent } from './all-decks/all-decks.component';
 import { AllIdeasComponent } from './all-ideas/all-ideas.component';
 import { IdeaComponent } from './idea/idea.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { IdeaComponent } from './idea/idea.component';
     DeckComponent,
     AllDecksComponent,
     AllIdeasComponent,
-    IdeaComponent
+    IdeaComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
