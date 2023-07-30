@@ -52,9 +52,11 @@ module.exports = {
     },
 
     async deleteIdea(req, res, next) {
-        const query = `DELETE from ideas WHERE id=${req.params.id}`;
+        const queryIdeaDeletion = `DELETE from ideas WHERE id=${req.params.id}`;
+        const queryDeckIdeaDeletion =`DELETE from deck_ideas WHERE idea_id=${req.params.id}`;
         try {
-            await pool.query(query);
+            await pool.query(queryIdeaDeletion);
+            await pool.query(queryDeckIdeaDeletion)
             res.json({
                 "message": "Idea successfully deleted.",
                 "status": 200,
