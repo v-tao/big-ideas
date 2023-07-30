@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
+import { AuthModule } from '@auth0/auth0-angular';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -22,9 +23,17 @@ import { NavbarComponent } from './navbar/navbar.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    AuthModule.forRoot({
+      domain: 'dev-edxfvmyn17fhrpuf.us.auth0.com',
+      clientId: 'zrugOxx0PqHgX220rNyl0YvEkT6MtMGj',
+      authorizationParams: {
+        redirect_uri: 'http://localhost:4200/decks',
+      },
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }
